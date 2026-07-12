@@ -34,4 +34,17 @@ public class UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("Id not Valid"));
         return userMapper.mapEntityToDto(user);
     }
+
+    public void update(UserRequestDto userRequestDto, long id) {
+        User user = userRepository.findById(id)
+                        .orElseThrow(() -> new ResourceNotFoundException(("Invalid Id")));
+        user.setFullName(userRequestDto.fullName());
+        user.setEmail(userRequestDto.email());
+        user.setPhoneNumber(userRequestDto.phoneNumber());
+        user.setPassword(userRequestDto.password());
+        user.setGender(userRequestDto.gender());
+        user.setAddress(userRequestDto.address());
+
+        userRepository.save(user);
+    }
 }
