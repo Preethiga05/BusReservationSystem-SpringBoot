@@ -47,4 +47,17 @@ public class UserService {
 
         userRepository.save(user);
     }
+
+    public void softDelete(long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Invalid Id"));
+        user.setActive(false);
+        userRepository.save(user);
+    }
+
+    public void hardDelete(long id){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Invalid Id"));
+        userRepository.deleteById(id);
+    }
 }

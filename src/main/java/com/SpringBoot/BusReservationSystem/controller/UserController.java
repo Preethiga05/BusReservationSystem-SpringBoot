@@ -36,4 +36,9 @@ public class UserController {
         userService.update(userRequestDto,id);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void softDelete(@PathVariable long id){
+        userService.softDelete(id);
+    }
+
 }

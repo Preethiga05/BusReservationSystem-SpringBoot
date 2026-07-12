@@ -58,4 +58,6 @@ public class User {
     @UpdateTimestamp
     private Instant updatedAt;
 
+    private boolean isActive = true;
+
 }
