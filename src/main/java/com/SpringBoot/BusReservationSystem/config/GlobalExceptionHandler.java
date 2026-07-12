@@ -1,5 +1,7 @@
 package com.SpringBoot.BusReservationSystem.config;
 
+import com.SpringBoot.BusReservationSystem.dto.response.ErrorMessageDto;
+import com.SpringBoot.BusReservationSystem.exceptions.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -27,5 +29,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .badRequest()
                 .body(map);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorMessageDto> handleResourceNotFoundException(
+            ResourceNotFoundException e
+    ){
+        return ResponseEntity
+                .badRequest()
+                .body(new ErrorMessageDto(e.getMessage()));
     }
 }

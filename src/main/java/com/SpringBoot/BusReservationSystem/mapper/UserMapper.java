@@ -1,6 +1,7 @@
 package com.SpringBoot.BusReservationSystem.mapper;
 
 import com.SpringBoot.BusReservationSystem.dto.request.UserRequestDto;
+import com.SpringBoot.BusReservationSystem.dto.response.UserResponseDto;
 import com.SpringBoot.BusReservationSystem.enums.Role;
 import com.SpringBoot.BusReservationSystem.enums.UserStatus;
 import com.SpringBoot.BusReservationSystem.model.User;
@@ -21,5 +22,18 @@ public class UserMapper {
         user.setUserStatus(UserStatus.ACTIVE);
 
         return user;
+    }
+    public UserResponseDto mapEntityToDto(User user){
+        UserResponseDto dto = new UserResponseDto(
+                user.getFullName(),
+                user.getEmail(),
+                user.getPhoneNumber(),
+                user.getGender(),
+                user.getAddress(),
+                user.getRole(),
+                user.getUserStatus()
+        );
+
+        return dto;
     }
 }
