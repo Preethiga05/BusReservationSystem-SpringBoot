@@ -1,8 +1,6 @@
 package com.SpringBoot.BusReservationSystem.model;
 
-import com.SpringBoot.BusReservationSystem.enums.Gender;
 import com.SpringBoot.BusReservationSystem.enums.Role;
-import com.SpringBoot.BusReservationSystem.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -28,18 +26,8 @@ public class User {
     @Column(nullable = false,length = 150,unique = true)
     private String email;
 
-    @Column(nullable = false,unique = true,length = 10)
-    private String phoneNumber;
-
     @Column(nullable = false,length = 15,unique = true)
     private String password;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Gender gender;
-
-    @Column(nullable = false,length = 500)
-    private String address;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

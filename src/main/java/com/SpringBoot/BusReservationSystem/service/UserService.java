@@ -2,6 +2,7 @@ package com.SpringBoot.BusReservationSystem.service;
 
 import com.SpringBoot.BusReservationSystem.dto.request.UserRequestDto;
 import com.SpringBoot.BusReservationSystem.dto.response.UserResponseDto;
+import com.SpringBoot.BusReservationSystem.enums.Role;
 import com.SpringBoot.BusReservationSystem.exceptions.ResourceNotFoundException;
 import com.SpringBoot.BusReservationSystem.mapper.UserMapper;
 import com.SpringBoot.BusReservationSystem.model.User;
@@ -18,7 +19,10 @@ public class UserService {
     private final UserMapper userMapper;
     private final UserRepository userRepository;
     public User add(@Valid UserRequestDto userRequestDto) {
-        User user = userMapper.mapDtoToEntity(userRequestDto);
+        User user = userMapper.mapDtoToEntity(userRequestDto.fullName(),
+                userRequestDto.email(),
+                userRequestDto.password(),
+                Role.PASSENGER);
         return userRepository.save(user);
     }
 
@@ -40,10 +44,7 @@ public class UserService {
                         .orElseThrow(() -> new ResourceNotFoundException(("Invalid Id")));
         user.setFullName(userRequestDto.fullName());
         user.setEmail(userRequestDto.email());
-        user.setPhoneNumber(userRequestDto.phoneNumber());
         user.setPassword(userRequestDto.password());
-        user.setGender(userRequestDto.gender());
-        user.setAddress(userRequestDto.address());
 
         userRepository.save(user);
     }

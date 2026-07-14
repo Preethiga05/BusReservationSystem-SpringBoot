@@ -1,7 +1,6 @@
 package com.SpringBoot.BusReservationSystem.enums;
 
-public enum UserStatus {
+public enum TicketStatus {
     ACTIVE,
-    INACTIVE,
-    BLOCKED
+    CANCELLED
 }
