@@ -1,36 +1,39 @@
 package com.SpringBoot.BusReservationSystem.mapper;
 
 import com.SpringBoot.BusReservationSystem.dto.request.BusOperatorReqDto;
+import com.SpringBoot.BusReservationSystem.dto.response.BusOperatorResponseDto;
 import com.SpringBoot.BusReservationSystem.model.BusOperator;
 import com.SpringBoot.BusReservationSystem.model.User;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BusOperatorMapper {
-    public static BusOperator toEntity(BusOperatorReqDto dto, User user) {
 
-        BusOperator operator = new BusOperator();
+    public static BusOperatorResponseDto mapEntityToDto(BusOperator operator) {
+        return new BusOperatorResponseDto(
 
-        operator.setUser(user);
-        operator.setCompanyName(dto.companyName());
-        operator.setOwnerName(dto.ownerName());
-        operator.setLicenceNumber(dto.licenceNumber());
-        operator.setCompanyAddress(dto.companyAddress());
-        operator.setPhoneNumber(dto.phoneNumber());
-        operator.setGender(dto.gender());
-
-        return operator;
-    }
-    public static BusOperatorReqDto mapEntityToDto(BusOperator operator) {
-
-        return new BusOperatorReqDto(
-                operator.getUser().getUserId(),
+                operator.getBusOpId(),
                 operator.getCompanyName(),
-                operator.getOwnerName(),
                 operator.getLicenceNumber(),
                 operator.getCompanyAddress(),
                 operator.getPhoneNumber(),
-                operator.getGender()
+                operator.getGender(),
+                operator.getUser().getFullName(),
+                operator.getUser().getEmail()
+
         );
+    }
+
+    public static BusOperator mapDtoToEntity(BusOperatorReqDto busOperatorReqDto) {
+        BusOperator busOperator = new BusOperator();
+
+        busOperator.setCompanyName(busOperatorReqDto.companyName());
+        busOperator.setLicenceNumber(busOperatorReqDto.licenceNumber());
+        busOperator.setCompanyAddress(busOperatorReqDto.companyAddress());
+        busOperator.setPhoneNumber(busOperatorReqDto.phoneNumber());
+        busOperator.setGender(busOperatorReqDto.gender());
+
+        return busOperator;
+
     }
 }

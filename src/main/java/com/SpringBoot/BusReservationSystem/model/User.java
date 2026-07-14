@@ -1,6 +1,7 @@
 package com.SpringBoot.BusReservationSystem.model;
 
 import com.SpringBoot.BusReservationSystem.enums.Role;
+import com.SpringBoot.BusReservationSystem.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -35,7 +36,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private UserStatus userStatus = UserStatus.ACTIVE;
+    private Status userStatus = Status.ACTIVE;
 
     private Instant lastLogin;
 

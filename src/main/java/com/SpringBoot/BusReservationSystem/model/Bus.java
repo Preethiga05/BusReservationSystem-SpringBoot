@@ -1,6 +1,7 @@
 package com.SpringBoot.BusReservationSystem.model;
 
 import com.SpringBoot.BusReservationSystem.enums.BusType;
+import com.SpringBoot.BusReservationSystem.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,9 +13,6 @@ import lombok.*;
 @ToString
 @Table(name = "buses")
 public class Bus {
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long busId;
@@ -33,5 +31,13 @@ public class Bus {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private BusStatus busStatus;
+    private Status busStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "bus_operator_id")
+    private BusOperator busOperator;
 }

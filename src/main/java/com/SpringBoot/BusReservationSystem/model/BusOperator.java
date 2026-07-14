@@ -15,15 +15,9 @@ public class BusOperator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int busOpId;
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
     @Column(nullable = false)
     private String companyName;
-
-    @Column(nullable = false)
-    private String ownerName;
 
     @Column(nullable = false,updatable = false,unique = true)
     private String licenceNumber;
@@ -37,4 +31,13 @@ public class BusOperator {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Gender gender;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "executive_id",nullable = false)
+    private Executive executive;
+
 }
