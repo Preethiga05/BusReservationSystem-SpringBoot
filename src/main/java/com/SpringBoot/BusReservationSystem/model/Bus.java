@@ -34,10 +34,6 @@ public class Bus {
     private Status busStatus;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
     @JoinColumn(name = "bus_operator_id")
     private BusOperator busOperator;
 }
