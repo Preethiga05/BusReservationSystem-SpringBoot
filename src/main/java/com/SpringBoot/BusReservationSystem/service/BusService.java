@@ -1,7 +1,6 @@
 package com.SpringBoot.BusReservationSystem.service;
 
-import com.SpringBoot.BusReservationSystem.dto.request.BusOperatorReqDto;
-import com.SpringBoot.BusReservationSystem.dto.request.BusReqDto;
+import com.SpringBoot.BusReservationSystem.dto.request.BusRequestDto;
 import com.SpringBoot.BusReservationSystem.exceptions.ResourceNotFoundException;
 import com.SpringBoot.BusReservationSystem.mapper.BusMapper;
 import com.SpringBoot.BusReservationSystem.model.Bus;
@@ -17,11 +16,11 @@ import org.springframework.stereotype.Service;
 public class BusService {
     private final BusRepository busRepository;
     private final BusOperatorRepository busOperatorRepository;
-    public Bus add(long busOpId, @Valid BusReqDto busReqDto) {
+    public Bus add(long busOpId, @Valid BusRequestDto busRequestDto) {
         BusOperator busOperator = busOperatorRepository.findById(busOpId)
                 .orElseThrow(() -> new ResourceNotFoundException("BusOperator Id invalid"));
 
-        Bus bus = BusMapper.mapDtoToEntity(busReqDto);
+        Bus bus = BusMapper.mapDtoToEntity(busRequestDto);
 
         bus.setBusOperator(busOperator);
 

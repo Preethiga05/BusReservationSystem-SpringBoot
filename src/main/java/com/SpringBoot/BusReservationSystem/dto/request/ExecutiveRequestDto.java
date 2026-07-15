@@ -3,9 +3,8 @@ package com.SpringBoot.BusReservationSystem.dto.request;
 import com.SpringBoot.BusReservationSystem.enums.Gender;
 import com.SpringBoot.BusReservationSystem.enums.JobTitle;
 import jakarta.validation.constraints.*;
-import org.springframework.stereotype.Component;
 
-public record ExecutiveReqDto(
+public record ExecutiveRequestDto(
         @NotBlank(message = "Full Name is mandatory")
         @Size(min = 3, max = 100,
                 message = "Full Name must be between 3 and 100 characters")

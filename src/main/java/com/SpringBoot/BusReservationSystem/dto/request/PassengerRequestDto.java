@@ -1,12 +1,11 @@
 package com.SpringBoot.BusReservationSystem.dto.request;
 
 import com.SpringBoot.BusReservationSystem.enums.Gender;
-import com.SpringBoot.BusReservationSystem.enums.Status;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
-public record PassengerReqDto(
+public record PassengerRequestDto(
         @NotBlank(message = "Email cannot be empty")
         @Email(message = "Invalid email")
         String email,

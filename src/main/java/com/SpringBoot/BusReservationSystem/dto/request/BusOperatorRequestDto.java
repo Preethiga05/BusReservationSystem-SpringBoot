@@ -1,13 +1,12 @@
 package com.SpringBoot.BusReservationSystem.dto.request;
 
 import com.SpringBoot.BusReservationSystem.enums.Gender;
-import com.SpringBoot.BusReservationSystem.enums.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public record BusOperatorReqDto(
+public record BusOperatorRequestDto(
         // User Details
         @NotBlank(message = "Full name cannot be empty")
         String fullName,

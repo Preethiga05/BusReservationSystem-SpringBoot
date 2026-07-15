@@ -1,9 +1,8 @@
 package com.SpringBoot.BusReservationSystem.mapper;
 
-import com.SpringBoot.BusReservationSystem.dto.request.BusOperatorReqDto;
+import com.SpringBoot.BusReservationSystem.dto.request.BusOperatorRequestDto;
 import com.SpringBoot.BusReservationSystem.dto.response.BusOperatorResponseDto;
 import com.SpringBoot.BusReservationSystem.model.BusOperator;
-import com.SpringBoot.BusReservationSystem.model.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,14 +23,14 @@ public class BusOperatorMapper {
         );
     }
 
-    public static BusOperator mapDtoToEntity(BusOperatorReqDto busOperatorReqDto) {
+    public static BusOperator mapDtoToEntity(BusOperatorRequestDto busOperatorRequestDto) {
         BusOperator busOperator = new BusOperator();
 
-        busOperator.setCompanyName(busOperatorReqDto.companyName());
-        busOperator.setLicenceNumber(busOperatorReqDto.licenceNumber());
-        busOperator.setCompanyAddress(busOperatorReqDto.companyAddress());
-        busOperator.setPhoneNumber(busOperatorReqDto.phoneNumber());
-        busOperator.setGender(busOperatorReqDto.gender());
+        busOperator.setCompanyName(busOperatorRequestDto.companyName());
+        busOperator.setLicenceNumber(busOperatorRequestDto.licenceNumber());
+        busOperator.setCompanyAddress(busOperatorRequestDto.companyAddress());
+        busOperator.setPhoneNumber(busOperatorRequestDto.phoneNumber());
+        busOperator.setGender(busOperatorRequestDto.gender());
 
         return busOperator;
 

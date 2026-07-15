@@ -1,12 +1,11 @@
 package com.SpringBoot.BusReservationSystem.dto.request;
 
 import com.SpringBoot.BusReservationSystem.enums.Status;
-import com.SpringBoot.BusReservationSystem.model.Bus;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 
-public record RouteReqDto(
+public record RouteRequestDto(
         @NotBlank(message = "Origin city cannot be empty")
         @Size(min = 3, max = 100, message = "Origin city should be between 3 and 100 characters")
         String originCity,

@@ -1,6 +1,6 @@
 package com.SpringBoot.BusReservationSystem.service;
 
-import com.SpringBoot.BusReservationSystem.dto.request.PassengerReqDto;
+import com.SpringBoot.BusReservationSystem.dto.request.PassengerRequestDto;
 import com.SpringBoot.BusReservationSystem.dto.response.PassengerResponseDto;
 import com.SpringBoot.BusReservationSystem.enums.Role;
 import com.SpringBoot.BusReservationSystem.exceptions.ResourceNotFoundException;
@@ -19,17 +19,17 @@ import org.springframework.stereotype.Service;
 public class PassengerService {
     private final PassengerRepository passengerRepository;
     private final UserRepository userRepository;
-    public Passenger add(PassengerReqDto passengerReqDto) {
+    public Passenger add(PassengerRequestDto passengerRequestDto) {
         User user = UserMapper.mapDtoToEntity(
-                passengerReqDto.fullName(),
-                passengerReqDto.email(),
-                passengerReqDto.password(),
+                passengerRequestDto.fullName(),
+                passengerRequestDto.email(),
+                passengerRequestDto.password(),
                 Role.EXECUTIVE
         );
 
         user = userRepository.save(user);
 
-        Passenger passenger = PassengerMapper.mapDtoToEntity(passengerReqDto);
+        Passenger passenger = PassengerMapper.mapDtoToEntity(passengerRequestDto);
         passenger.setUser(user);
 
         return passengerRepository.save(passenger);

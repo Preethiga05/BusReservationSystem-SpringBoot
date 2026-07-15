@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
-public record BusReqDto(
+public record BusRequestDto(
         @NotBlank(message = "Bus name cannot be empty")
         @Size(min = 3, max = 100, message = "Bus name should be between 3 and 100 characters")
         String busName,

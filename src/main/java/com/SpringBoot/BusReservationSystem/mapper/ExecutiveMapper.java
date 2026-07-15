@@ -1,13 +1,12 @@
 package com.SpringBoot.BusReservationSystem.mapper;
 
-import com.SpringBoot.BusReservationSystem.dto.request.ExecutiveReqDto;
+import com.SpringBoot.BusReservationSystem.dto.request.ExecutiveRequestDto;
 import com.SpringBoot.BusReservationSystem.model.Executive;
-import com.SpringBoot.BusReservationSystem.model.User;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ExecutiveMapper {
-    public static Executive mapDtoToEntity(ExecutiveReqDto dto) {
+    public static Executive mapDtoToEntity(ExecutiveRequestDto dto) {
 
         Executive executive = new Executive();
 

@@ -27,7 +27,7 @@ public class Bus {
     private BusType busType;
 
     @Column(nullable = false)
-    private int totalSeats;
+    private Integer totalSeats;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

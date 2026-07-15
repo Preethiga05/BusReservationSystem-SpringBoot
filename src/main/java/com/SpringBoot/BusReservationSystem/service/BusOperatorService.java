@@ -1,6 +1,6 @@
 package com.SpringBoot.BusReservationSystem.service;
 
-import com.SpringBoot.BusReservationSystem.dto.request.BusOperatorReqDto;
+import com.SpringBoot.BusReservationSystem.dto.request.BusOperatorRequestDto;
 import com.SpringBoot.BusReservationSystem.enums.Role;
 import com.SpringBoot.BusReservationSystem.exceptions.ResourceNotFoundException;
 import com.SpringBoot.BusReservationSystem.mapper.BusOperatorMapper;
@@ -20,19 +20,19 @@ public class BusOperatorService {
     private final ExecutiveRepository executiveRepository;
     private final UserRepository userRepository;
     private final BusOperatorRepository busOperatorRepository;
-    public BusOperator add(long executiveId,BusOperatorReqDto busOperatorReqDto) {
+    public BusOperator add(long executiveId, BusOperatorRequestDto busOperatorRequestDto) {
         Executive executive = executiveRepository.findById(executiveId)
                 .orElseThrow(() -> new ResourceNotFoundException("Executive Id is invalid"));
 
         User user = UserMapper.mapDtoToEntity(
-                busOperatorReqDto.fullName(),
-                busOperatorReqDto.email(),
-                busOperatorReqDto.password(),
+                busOperatorRequestDto.fullName(),
+                busOperatorRequestDto.email(),
+                busOperatorRequestDto.password(),
                 Role.BUSOPERATOR
         );
         user = userRepository.save(user);
 
-        BusOperator busOperator = BusOperatorMapper.mapDtoToEntity(busOperatorReqDto);
+        BusOperator busOperator = BusOperatorMapper.mapDtoToEntity(busOperatorRequestDto);
 
         busOperator.setUser(user);
         busOperator.setExecutive(executive);

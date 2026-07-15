@@ -1,13 +1,12 @@
 package com.SpringBoot.BusReservationSystem.mapper;
 
-import com.SpringBoot.BusReservationSystem.dto.request.PassengerReqDto;
+import com.SpringBoot.BusReservationSystem.dto.request.PassengerRequestDto;
 import com.SpringBoot.BusReservationSystem.dto.response.PassengerResponseDto;
 import com.SpringBoot.BusReservationSystem.enums.Status;
 import com.SpringBoot.BusReservationSystem.model.Passenger;
-import com.SpringBoot.BusReservationSystem.model.User;
 
 public class PassengerMapper {
-    public static Passenger mapDtoToEntity(PassengerReqDto dto) {
+    public static Passenger mapDtoToEntity(PassengerRequestDto dto) {
         Passenger passenger = new Passenger();
 
         passenger.setFullName(dto.fullName());

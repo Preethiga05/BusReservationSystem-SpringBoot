@@ -1,11 +1,21 @@
 package com.SpringBoot.BusReservationSystem.model;
 
 import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Table(name = "bus_schedule")
 public class BusSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +37,11 @@ public class BusSchedule {
     @Column(name = "booked_seats")
     private Integer bookedSeats = 0;
 
+    @CreationTimestamp
     @Column(name = "created_at",updatable = false)
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at",updatable = false)
     private LocalDateTime updatedAt;
 

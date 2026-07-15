@@ -1,7 +1,6 @@
 package com.SpringBoot.BusReservationSystem.service;
 
-import com.SpringBoot.BusReservationSystem.dto.request.ExecutiveReqDto;
-import com.SpringBoot.BusReservationSystem.dto.request.UserRequestDto;
+import com.SpringBoot.BusReservationSystem.dto.request.ExecutiveRequestDto;
 import com.SpringBoot.BusReservationSystem.enums.Role;
 import com.SpringBoot.BusReservationSystem.mapper.ExecutiveMapper;
 import com.SpringBoot.BusReservationSystem.mapper.UserMapper;
@@ -19,18 +18,18 @@ public class ExecutiveService {
     private final UserRepository userRepository;
     private final ExecutiveRepository executiveRepository;
 
-    public Executive add(@Valid ExecutiveReqDto executiveReqDto) {
+    public Executive add(@Valid ExecutiveRequestDto executiveRequestDto) {
 
         User user = UserMapper.mapDtoToEntity(
-                executiveReqDto.fullName(),
-                executiveReqDto.email(),
-                executiveReqDto.password(),
+                executiveRequestDto.fullName(),
+                executiveRequestDto.email(),
+                executiveRequestDto.password(),
                 Role.EXECUTIVE
         );
 
         user = userRepository.save(user);
 
-        Executive executive = ExecutiveMapper.mapDtoToEntity(executiveReqDto);
+        Executive executive = ExecutiveMapper.mapDtoToEntity(executiveRequestDto);
 
         executive.setUser(user);
 
