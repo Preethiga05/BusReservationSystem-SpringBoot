@@ -12,14 +12,6 @@ public class BusSchedule {
     @Column(name = "schedule_id")
     private Long scheduleId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bus_id", nullable = false)
-    private Bus bus;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "route_id", nullable = false)
-    private Route route;
-
     @Column(name = "journey_date", nullable = false)
     private LocalDate journeyDate;
 
@@ -35,9 +27,17 @@ public class BusSchedule {
     @Column(name = "booked_seats")
     private Integer bookedSeats = 0;
 
-    @Column(name = "created_at", insertable = false, updatable = false)
+    @Column(name = "created_at",updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", insertable = false, updatable = false)
+    @Column(name = "updated_at",updatable = false)
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "bus_id", nullable = false)
+    private Bus bus;
+
+    @ManyToOne
+    @JoinColumn(name = "route_id", nullable = false)
+    private Route route;
 }

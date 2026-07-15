@@ -27,7 +27,7 @@ public class User {
     @Column(nullable = false,length = 150,unique = true)
     private String email;
 
-    @Column(nullable = false,length = 15,unique = true)
+    @Column(nullable = false,length = 15)
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -38,14 +38,7 @@ public class User {
     @Column(nullable = false)
     private Status userStatus = Status.ACTIVE;
 
-    private Instant lastLogin;
 
-    @CreationTimestamp
-    @Column(updatable = false)
-    private Instant createdAt;
-
-    @UpdateTimestamp
-    private Instant updatedAt;
 
     private boolean isActive = true;
 
